@@ -4,10 +4,12 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /backend
 WORKDIR /backend
 
-# install dependecies for postgres
+# install git and dependecies for postgres
 RUN apt-get update \
-    && apt-get -y install libpq-dev gcc
+    && apt-get -y install libpq-dev gcc \
+    && apt-get -y install git
 
+RUN pip install --upgrade pip
 COPY requirements.txt /backend/
 RUN pip install -r requirements.txt
 
